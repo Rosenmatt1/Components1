@@ -1,28 +1,54 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+// import ListItem from './components/listitem.js'
+// import todos from './data.js'
+import List from './components/list.js'
+import AddListItem from './components/addlistitem.js'
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      newTodo: "",
+      todos: []
+    }
+  }
+
+  updateTodo = (event) => {
+    this.setState({
+      newTodo: event.target.value
+    })
+  }
+
+  addTodo = (event) => {
+    event.preventDefault()
+
+    if(this.state.newTodo.length === 0) {
+      alert('No Todo')
+    } else {
+      let todo = {
+        todo: this.state.newTodo
+      }
+      this.setState({
+        todos: [...this.state.todos, todo]
+      })
+    }
+  }
+ 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <AddListItem 
+        updateTodo={this.updateTodo}
+        addTodo={this.addTodo}
+        />
+
+        <List 
+        todos={this.state.todos}/>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
