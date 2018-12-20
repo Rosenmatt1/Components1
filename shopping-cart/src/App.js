@@ -58,7 +58,7 @@ render() {
       <div>
         <CartHeader/>
         <CartItems
-        itemList = {forCart} 
+        itemList = {this.state.product.forCart} 
         />
         <Form
         products = {this.state.products}
