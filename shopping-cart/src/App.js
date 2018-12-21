@@ -21,35 +21,48 @@ class App extends Component {
       { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
       { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
     ], 
-    product: {
-      name: "",
-      id: "",
-      priceinCents: "",
-      forCart: []
-    }, 
-    quantity: 0
+    name: "",
+    priceInCents: 0,
+    forCart: [],
+    quantity: 0,
   }
 }
 
 updateQuantity = (event) => {
-  console.log(event.target.value)
   this.setState({
     quantity: event.target.value
   })
 }
 
 updateOrder = (event) => {
-  console.log(event.target.value)
+  for (let i = 0; i < event.target.value.length; i++) {
+    if (event.target.value[i] === "$") {
+      var slicedName = event.target.value.slice(0, i -1)
+    }
+  }
+  var price = this.state.products.filter(element => {
+    return slicedName === element.name
+    
+  })
   this.setState({
-    newItem: event.target.value
+    name: slicedName,
+    priceInCents: (price[0].priceInCents/100)
   })
 }
 
 addToCart = (event) => {
   event.preventDefault()
+  // console.log(this.state)
+  var newItem = {
+    item: this.state.name,
+    price: this.state.priceInCents,
+    quantity: this.state.quantity
+  }
+  // this.setState({
+  //   forCart: [...]
+  // })
+  console.log(newItem)
 }
-
-// get the values from inputs, put into JavaScript object(represents cartItem), pass that info into cartItem.  Once we build our JavaScript object we need to pass into the stagnant arrray.
 
 
 render() {
@@ -58,17 +71,18 @@ render() {
       <div>
         <CartHeader/>
         <CartItems
-        itemList = {this.state.product.forCart} 
+        itemList = {this.state.forCart} 
         />
         <Form
+        addToCart={this.addToCart}
         products = {this.state.products}
         updateQuantity = {this.updateQuantity}
         updateOrder = {this.updateOrder} 
-        addToCart = {this.addToOrder}
         />
         <CartFooter
         copyright = "&copy; 2016" 
         />
+     
       </div>
     );
   }

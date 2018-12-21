@@ -22,10 +22,11 @@ class CartItems extends Component {
           {this.props.itemList.map((item, idx) => { 
           return <CartItem 
             key={idx}
-            product={item.product.name}
-            price={item.product.priceInCents}
+            product={item.name}
+            price={item.priceInCents}
             quantity={item.quantity}
           />})} 
+
         </div>
 
       </div>

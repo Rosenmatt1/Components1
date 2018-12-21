@@ -29,7 +29,6 @@ const Form = (props) => {
           </select>
         </div>
         <button 
-        type="submit"
         className="btn btn-primary mb-3"
         onClick={props.addToCart}
         >
