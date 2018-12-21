@@ -23,8 +23,9 @@ class App extends Component {
     ], 
     name: "",
     priceInCents: 0,
-    forCart: [],
+    cart: [],
     quantity: 0,
+    total: 0
   }
 }
 
@@ -40,9 +41,8 @@ updateOrder = (event) => {
       var slicedName = event.target.value.slice(0, i -1)
     }
   }
-  var price = this.state.products.filter(element => {
+  let price = this.state.products.filter(element => {
     return slicedName === element.name
-    
   })
   this.setState({
     name: slicedName,
@@ -52,18 +52,16 @@ updateOrder = (event) => {
 
 addToCart = (event) => {
   event.preventDefault()
-  // console.log(this.state)
-  var newItem = {
+  let newItem = {
     item: this.state.name,
     price: this.state.priceInCents,
     quantity: this.state.quantity
   }
-  // this.setState({
-  //   forCart: [...]
-  // })
-  console.log(newItem)
+  this.setState({
+    cart: [...this.state.cart, newItem],
+    total: this.state.quantity * this.state.priceInCents
+  })
 }
-
 
 render() {
 
@@ -71,10 +69,11 @@ render() {
       <div>
         <CartHeader/>
         <CartItems
-        itemList = {this.state.forCart} 
+        cart = {this.state.cart} 
         />
         <Form
         addToCart={this.addToCart}
+        total={this.state.total}
         products = {this.state.products}
         updateQuantity = {this.updateQuantity}
         updateOrder = {this.updateOrder} 
@@ -82,7 +81,6 @@ render() {
         <CartFooter
         copyright = "&copy; 2016" 
         />
-     
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 const Form = (props) => {
   let newstuff = props.products.map((item, idx) => {
@@ -10,8 +10,9 @@ const Form = (props) => {
   })
   
     return (
+      <div className="container">
       <form>
-        <div className="my-2">Total Price:  </div>
+        <div className="my-2">Total Price: {props.total} </div>
         <div className="form-group">
           Quantity
           <input 
@@ -24,7 +25,7 @@ const Form = (props) => {
           className="form-control"
           onChange={props.updateOrder}
           >
-            <option value="">--Please choose an option--</option>
+            <option value="">--Please choose your item--</option>
             {newstuff}
           </select>
         </div>
@@ -34,6 +35,7 @@ const Form = (props) => {
         >
         Submit</button>
       </form>
+      </div>
     )
   }
 
