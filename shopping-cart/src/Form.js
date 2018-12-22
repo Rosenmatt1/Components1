@@ -12,8 +12,8 @@ const Form = (props) => {
     return (
       <div className="container">
       <form>
-        <div className="my-2">Total Price: {props.total} </div>
-        <div className="form-group">
+        <div className="my-2">Total Price: ${props.total} </div>
+          <div className="form-group">
           Quantity
           <input 
           type="number"

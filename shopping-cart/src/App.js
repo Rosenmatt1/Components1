@@ -72,8 +72,8 @@ render() {
         cart = {this.state.cart} 
         />
         <Form
-        addToCart={this.addToCart}
-        total={this.state.total}
+        addToCart = {this.addToCart}
+        total = {this.state.total}
         products = {this.state.products}
         updateQuantity = {this.updateQuantity}
         updateOrder = {this.updateOrder} 

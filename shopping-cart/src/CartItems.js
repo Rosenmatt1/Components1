@@ -3,7 +3,7 @@ import CartItem from './CartItem.js'
 
 class CartItems extends Component {
 
-  render(props) {
+  render() {
 
     return(
       <div className="container">
@@ -16,7 +16,6 @@ class CartItems extends Component {
               <div className="col-md-2">Quantity</div>
             </div>
           </div>
-          
           {this.props.cart.map((item, idx) => { 
             console.log(item)
           return <CartItem 
@@ -25,7 +24,6 @@ class CartItems extends Component {
             price={item.price}
             quantity={item.quantity}
           />})} 
-
         </div>
       </div>
     )
