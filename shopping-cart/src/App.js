@@ -25,7 +25,8 @@ class App extends Component {
     priceInCents: 0,
     cart: [],
     quantity: 0,
-    total: 0
+    total: 0,
+    subTotal: 0
   }
 }
 
