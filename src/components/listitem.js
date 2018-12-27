@@ -4,7 +4,7 @@ class ListItem extends Component {
   // state = {
   // check: false,
   // strike: 'none'
-  }
+  
 
   render() {
   

@@ -56,11 +56,12 @@ addToCart = (event) => {
   let newItem = {
     item: this.state.name,
     price: this.state.priceInCents,
-    quantity: this.state.quantity
+    quantity: this.state.quantity,
+    subTotal: this.state.quantity * this.state.priceInCents
   }
   this.setState({
     cart: [...this.state.cart, newItem],
-    total: this.state.quantity * this.state.priceInCents
+    total: this.state.total + newItem.subTotal
   })
 }
 
@@ -80,7 +81,8 @@ render() {
         updateOrder = {this.updateOrder} 
         />
         <CartFooter
-        copyright = "&copy; 2016" 
+        copyright = "&copy; copyright"
+        date = {new Date().toLocaleString()}
         />
       </div>
     );
