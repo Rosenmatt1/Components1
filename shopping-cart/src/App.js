@@ -37,6 +37,8 @@ updateQuantity = (event) => {
 }
 
 updateOrder = (event) => {
+  
+console.log(event.target.value)
   for (let i = 0; i < event.target.value.length; i++) {
     if (event.target.value[i] === "$") {
       var slicedName = event.target.value.slice(0, i -1)
